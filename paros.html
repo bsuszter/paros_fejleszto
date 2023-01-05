@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="paros.css">
+            <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="progress.js"></script>
+        <script src="random.js"></script>
+    </head>
+<body>
+    <div class="keret">
+        <div class="felso" id="felso">
+            <!-- progress bar a feladatok számának jelzéséhez -->
+            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            </div>
+        </div>
+        <div id="kozepso" class="kozepso">
+            <div id="mondat" class="mondat" value="mondat">
+                <h3>Párosító</h3>
+            </div>
+        </div>
+        <div class=also>
+            <div id="szavak" class="szavak">
+                <div class="szavak_bal">
+                    <input id="szavak1" class="szavas_bal" name="1" type="button" value="" onclick="">
+                    <input id="szavak2" class="szavas_bal" name="2" type="button" value="" onclick="">
+                    <input id="szavak3" class="szavas_bal" name="3" type="button" value="" onclick="">
+                    <input id="szavak4" class="szavas_bal" name="4" type="button" value="" onclick="">
+                    <input id="szavak5" class="szavas_bal" name="5" type="button" value="" onclick="">
+                </div>
+                <div class=szavak_jobb>
+                    <input id="szavak6" class="szavas_jobb" name="1" type="button" value="" onclick="">
+                    <input id="szavak7" class="szavas_jobb" name="2" type="button" value="" onclick="">
+                    <input id="szavak8" class="szavas_jobb" name="3" type="button" value="" onclick="">
+                    <input id="szavak9" class="szavas_jobb" name="4" type="button" value="" onclick="">
+                    <input id="szavak10" class="szavas_jobb" name="5" type="button" value="" onclick="">
+                </div>
+            </div>
+        </div>
+
+        <div class="gombok">    
+            <!-- <input id="ujGomb" type="button" value="Új feladat"> -->
+            <input id="ujra" type="button" value="Újra">         
+        <div> 
+        <div class="indit">
+            <input id="indit" type="button" value="Új feladat" onclick="indit()">
+        </div>
+
+        <div id="baloldali_ertek"></div>
+        <div id="baloldali_index"></div>
+        <div id="jobboldali_ertek"></div>
+        <div id="jobboldali_index"></div>
+    <script src="paros.js"></script>
+</body>
+</html>
