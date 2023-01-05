@@ -20,11 +20,44 @@ szinek = [
     "violet", "green","blue","brown","gold"
 ]
 
+//mindkét oldal minden gombját fehérre állítja
+function alaphelyzet(){
+    for (index = 0; index < 5; index++) {
+        bal[index].style.backgroundColor = "white";
+        jobb[index].style.backgroundColor = "white";
+    }
+  }
+
+  //új feladványnál visszaállítja a szegélyeket és újra engedélyezi a gombokat
+  function alaphelyzet2(){
+    for (index = 0; index < 5; index++) {
+        bal[index].style.border = "1px solid black";
+        jobb[index].style.border = "1px solid black";
+        bal[index].disabled = false;
+        jobb[index].disabled = false;
+    }
+
+    for (index = 0; index < 5; index++) {
+        bal[index].style.visibility = "visible";
+        jobb[index].style.visibility = "visible";
+    }
+  }
+
 var szinszam = 0;
 
 //A gombok stílusának kinyerése
 var bal = document.getElementsByClassName("szavas_bal");
 var jobb = document.getElementsByClassName("szavas_jobb");
+
+//kezdetben nem látszanak a gombok
+function alaphelyzet3(){
+    for (index = 0; index < 5; index++) {
+        bal[index].style.visibility = "hidden";
+        jobb[index].style.visibility = "hidden";
+    } 
+}
+
+alaphelyzet3();
 
 //a feladatok száma
 var feladatok_szama = feladvany_bal.length;
@@ -32,9 +65,19 @@ var feladatok_szama = feladvany_bal.length;
 var feladatok_keverve = kever(feladatok_szama);
 //egy feladaton belüli válaszlehetőségek száma
 var valaszlehetosegek_szama = feladvany_bal[0].length;
-console.log("tömb " + feladatok_keverve)
+//console.log("tömb " + feladatok_keverve)
 //az indit eljárásban ezzel számoljuk a megoldott (elindított) feladványok sorszámát
 var szamlalo = 0;
+
+function progressbar(){
+    let viszonyszam = 100 / feladatok_szama;
+    // progress bar programozása a kérdések számának jelöléséhez
+    let $progressBar = $('.progress-bar');
+    $progressBar.text(szamlalo);
+    // 30 kérdésre elosztva a 100%
+    $progressBar.css('width', (viszonyszam * szamlalo  + '%'));
+    //$progressBar.css('width', (kerdesszam * 100 / viszonyszam) + '%');
+}
 
 
 // 1 mp késleltetés mielőtt alaphelyzetbe áll
@@ -48,21 +91,24 @@ function delay(time) {
     alaphelyzet();
   }
 
-/*
+
 document.getElementById("baloldali_ertek").style.display = "none";
 document.getElementById("baloldali_index").style.display = "none";
 document.getElementById("jobboldali_ertek").style.display = "none";
 document.getElementById("jobboldali_index").style.display = "none";
-*/
+
 
 function indit(){
     alaphelyzet();
-    //alaphelyzet2();
+    alaphelyzet2();
+
+    szinszam = 0;
+    //amíg van feladvány, addig dolgozik
     if (szamlalo < feladatok_szama) {
         var bal_valaszlehetosegek_keverve = kever(valaszlehetosegek_szama);
         var jobb_valaszlehetosegek_keverve = kever(valaszlehetosegek_szama);
-        console.log("bal tömb " + bal_valaszlehetosegek_keverve)
-        console.log("jobb tömb " + jobb_valaszlehetosegek_keverve)
+        //console.log("bal tömb " + bal_valaszlehetosegek_keverve)
+        //console.log("jobb tömb " + jobb_valaszlehetosegek_keverve)
     
     
         //a bal és jobb oldali feladványok kiíratása a képernyőre
@@ -75,27 +121,17 @@ function indit(){
     
         }
         szamlalo += 1;
-        console.log("számláló " + szamlalo)       
+        progressbar();
+        //console.log("számláló " + szamlalo)   
+    //elfogytak a feladványok   
     } else {
         document.getElementById("ujra").style.visibility = "visible";
         document.getElementById("indit").style.visibility = "hidden";
+        alaphelyzet3();
     }
 }
 
-//mindkét oldal minden gombját fehérre állítja
-function alaphelyzet(){
-    for (index = 0; index < 5; index++) {
-        bal[index].style.backgroundColor = "white";
-        jobb[index].style.backgroundColor = "white";
-    }
-  }
 
-  function alaphelyzet2(){
-    for (index = 0; index < 5; index++) {
-        bal[index].style.border = "1px solid black";
-        jobb[index].style.border = "1px solid black";
-    }
-  }
 
 //bal oldali feladványok közül kiválasztás
 $(".szavas_bal").click(function() {
@@ -112,7 +148,7 @@ $(".szavas_bal").click(function() {
         //a gomb lenyomásakor sárga kijelölő szín
         this.style.backgroundColor = "yellow"
 
-        console.log("feladatok keverve: " + feladatok_keverve[szamlalo - 1])
+        //console.log("feladatok keverve: " + feladatok_keverve[szamlalo - 1])
 
         //beteszi egy rejtett divbe a kiválasztott feladvány tömbindexét (hányadik a tömbben)
         document.getElementById("baloldali_ertek").innerHTML = aktualis_tombindex;
@@ -130,8 +166,8 @@ $(".szavas_bal").click(function() {
         var eredmeny_bal = document.getElementById("baloldali_ertek").innerHTML;
         var eredmeny_jobb = document.getElementById("jobboldali_ertek").innerHTML;
 
-        console.log("eredmeny_bal" + eredmeny_bal);
-        console.log("eredmeny_jobb" + eredmeny_jobb);
+        //console.log("eredmeny_bal" + eredmeny_bal);
+        //console.log("eredmeny_jobb" + eredmeny_jobb);
         
         //ezzel a változóval érjük el, hogy a helyes párosításnál a párokat azonos színű kerettel jelölje
         var index_jobb = document.getElementById("jobboldali_index").innerHTML;
@@ -195,7 +231,7 @@ $(".szavas_jobb").click(function() {
         //a gomb lenyomásakor sárga kijelölő szín
         this.style.backgroundColor = "yellow"
 
-        console.log("feladatok keverve: " + feladatok_keverve[szamlalo - 1])
+        //console.log("feladatok keverve: " + feladatok_keverve[szamlalo - 1])
 
         //beteszi egy rejtett divbe a kiválasztott feladvány tömbindexét (hányadik a tömbben)
         document.getElementById("jobboldali_ertek").innerHTML = aktualis_tombindex;
@@ -213,8 +249,8 @@ $(".szavas_jobb").click(function() {
         var eredmeny_bal = document.getElementById("baloldali_ertek").innerHTML;
         var eredmeny_jobb = document.getElementById("jobboldali_ertek").innerHTML;
 
-        console.log("eredmeny_bal" + eredmeny_bal);
-        console.log("eredmeny_jobbos" + eredmeny_jobb);
+        //console.log("eredmeny_bal" + eredmeny_bal);
+        //console.log("eredmeny_jobbos" + eredmeny_jobb);
         
         //ezzel a változóval érjük el, hogy a helyes párosításnál a párokat azonos színű kerettel jelölje
         var index_bal = document.getElementById("baloldali_index").innerHTML;

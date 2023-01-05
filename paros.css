@@ -23,7 +23,7 @@
 
 .keret{
     width: 80%;
-    height: 500px;
+    height: 550px;
     margin-left: auto;
     margin-right: auto;
     background-color: #E94A3E;
@@ -88,7 +88,7 @@ h3{
 }
 
 
-#ujra, #ujGomb {
+#ujra {
     background-color:  #f55858;
     cursor: pointer;
     margin: 20px;
@@ -99,4 +99,9 @@ h3{
 
 #indit {
     background-color: #FB8604;
+    cursor: pointer;
+    margin: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
 }
