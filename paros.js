@@ -7,9 +7,9 @@ feladvany_bal = [
 
 feladvany_jobb = [
     ["az békül.", "ami fénylik.","keveset bízik.","mondjon bé-t is!","aki gyorsan ad."],
-    ["1,", "2","3","4","5"],
-    ["11,", "12","13","14","15"],
-    ["21,", "22","23","24","25"],
+    ["1", "2","3","4","5"],
+    ["a", "b","c","d","e"],
+    ["210,", "220","230","240","250"],
 ]
 
 document.getElementById("ujra").style.visibility = "hidden";
@@ -57,6 +57,7 @@ document.getElementById("jobboldali_index").style.display = "none";
 
 function indit(){
     alaphelyzet();
+    //alaphelyzet2();
     if (szamlalo < feladatok_szama) {
         var bal_valaszlehetosegek_keverve = kever(valaszlehetosegek_szama);
         var jobb_valaszlehetosegek_keverve = kever(valaszlehetosegek_szama);
@@ -84,8 +85,15 @@ function indit(){
 //mindkét oldal minden gombját fehérre állítja
 function alaphelyzet(){
     for (index = 0; index < 5; index++) {
-        bal[index].style.backgroundColor = "white"
-        jobb[index].style.backgroundColor = "white"
+        bal[index].style.backgroundColor = "white";
+        jobb[index].style.backgroundColor = "white";
+    }
+  }
+
+  function alaphelyzet2(){
+    for (index = 0; index < 5; index++) {
+        bal[index].style.border = "1px solid black";
+        jobb[index].style.border = "1px solid black";
     }
   }
 
@@ -178,7 +186,7 @@ $(".szavas_jobb").click(function() {
     //melyik feladvány az aktuális, ezt a kevert tömbből keressük ki 
     var aktualis_feladvany_sorszama = feladatok_keverve[szamlalo - 1];
     //kiolvassa a kattintott gombról, hogy hányadik az eredeti listában a benne szereplő érték 
-    var aktualis_tombindex = feladvany_bal[aktualis_feladvany_sorszama].indexOf(this.value);
+    var aktualis_tombindex = feladvany_jobb[aktualis_feladvany_sorszama].indexOf(this.value);
 
     //ha nincs a jobb oldalon semmi kiválasztva, akkor engedi a választást balról
     if (document.getElementById("baloldali_ertek").innerHTML == "") {
@@ -206,7 +214,7 @@ $(".szavas_jobb").click(function() {
         var eredmeny_jobb = document.getElementById("jobboldali_ertek").innerHTML;
 
         console.log("eredmeny_bal" + eredmeny_bal);
-        console.log("eredmeny_jobb" + eredmeny_jobb);
+        console.log("eredmeny_jobbos" + eredmeny_jobb);
         
         //ezzel a változóval érjük el, hogy a helyes párosításnál a párokat azonos színű kerettel jelölje
         var index_bal = document.getElementById("baloldali_index").innerHTML;
