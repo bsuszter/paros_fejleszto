@@ -1,15 +1,17 @@
 feladvany_bal = [
     ["Aki haragszik,", "Nem mind arany,","Aki sokat csalódik,","Aki á-t mond,","Kétszer ad,"],
-    ["1,", "2","3","4","5"],
-    ["11,", "12","13","14","15"],
-    ["21,", "22","23","24","25"],
+    ["Nem mind barátod,", "Ki korán kel,","Aki szelet vet,","Aki bírja,","Aki bottal köszön,"],
+    ["Akinek vaj van a fején,", "Aki sokat markol,","Aki varjat akar lőni,","Aki másnak vermet ás,","Aki fél a víztől,"],
+    ["Aki nem dolgozik,", "Aki dolgozik,","Akinek a foga fáj,","Aki hazudik,","Aki könnyen hisz,"],
+    ["Aki időt nyer,", "Aki sokat ígér,","Akinek nem inge,","Aki keres,","Aki magasra hág,"],
 ]
 
 feladvany_jobb = [
     ["az békül.", "ami fénylik.","keveset bízik.","mondjon bé-t is!","aki gyorsan ad."],
-    ["1", "2","3","4","5"],
-    ["a", "b","c","d","e"],
-    ["210,", "220","230","240","250"],
+    ["aki rád mosolyog.", "aranyat lel.","vihart arat.","marja","annak doronggal felelnek."],
+    ["ne menjen napra.", "keveset fog.","nem pengeti íját.","maga esik bele.","nem eszik halat."],
+    ["ne is egyék.", "nem ér rá pénzt keresni.","tartsa a nyelvét rajta.","az lop is.","könnyen csalatkozik."],
+    ["életet nyer.", "keveset ad.","az ne vegye magára.","talál.","nagyot esik."],
 ]
 
 document.getElementById("ujra").style.visibility = "hidden";
